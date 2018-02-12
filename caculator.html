@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="vi">
+<head>
+</head>
+
+<body>
+Loan Amount: <input type="number" id="loanamount" value="0" onchange="calINT()"/><br/>
+Fee 1: <input type="number" id="fee1" value="0" onchange="calNETLOAN()"/><br/>
+Fee 2: <input type="number" id="fee2" value="0" onchange="calNETLOAN()"/><br/>
+Fee 3: <input type="number" id="fee3" value="0" onchange="calNETLOAN()"/><br/>
+Fee 4: <input type="number" id="fee4" value="0" onchange="calNETLOAN()"/><br/>
+Fee 5: <input type="number" id="fee5" value="0" onchange="calNETLOAN()"/><br/>
+INT: <input type="number" id="intvalue" value="0" onchange="calNETLOAN()" readonly /> <span id="calINTValue"></span><br/>
+NetLoan: <input type="number" id="netloan" value="0" readonly /><span id="calNETLOANValue" ></span><br/>
+Term: <input type="number" id="term" value="0" onchange="calINT(); calNETLOAN()"/><br/>
+Rate: <input type="number" id="rate" value="0" onchange="calINT(); calNETLOAN()"/><br/>
+</body>
+
+
+<script>
+function calINT() {
+    var loan = document.getElementById("loanamount").value;
+	var term = parseFloat(document.getElementById("term").value);
+	var rate = parseFloat(document.getElementById("rate").value);
+	document.getElementById("intvalue").value = loan * term * rate;
+	document.getElementById("calINTValue").innerHTML = loan + "*" + term + "*" + rate;
+}
+function calNETLOAN() {
+    var loan = document.getElementById("loanamount").value;
+	var fee1 = parseFloat(document.getElementById("fee1").value);
+	var fee2 = parseFloat(document.getElementById("fee2").value);
+	var fee3 = parseFloat(document.getElementById("fee3").value);
+	var fee4 = parseFloat(document.getElementById("fee4").value);
+	var fee5 = parseFloat(document.getElementById("fee5").value);
+	var intvalue = parseFloat(document.getElementById("intvalue").value);
+	console.log(loan);
+	console.log(fee1 + fee2 + fee3 + fee4 + fee5 + intvalue);
+	document.getElementById("netloan").value = loan - ( fee1 + fee2 + fee3 + fee4 + fee5 + intvalue)
+	document.getElementById("calNETLOANValue").innerHTML = loan + "-(" + fee1 + "+" + fee2 + "+" + fee3 + "+" + fee4 + "+" + fee5 + "+" + intvalue + ")";
+}
+</script>
+
+</html>
+<!-- END TEMPLATE: USERCP_SHELL -->
